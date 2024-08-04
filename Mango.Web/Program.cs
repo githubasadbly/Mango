@@ -14,13 +14,18 @@ builder.Services.AddHttpContextAccessor();   //this is for cookies service store
 builder.Services.AddHttpClient();          //this is register Http Client service
 builder.Services.AddHttpClient<ICouponService, CouponService>();  //this also register Httpclient with coupon service
 builder.Services.AddHttpClient<IAuthService, AuthService>();      //this also register Httpclient with Auth service
+builder.Services.AddHttpClient<IProductService, ProductService>();
+
+// appsettings se url aa rhe hai 
 SD.CouponAPIBase = builder.Configuration["ServiceUrls:CouponAPI"];
 SD.AuthAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
+SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
 
 builder.Services.AddScoped<IBaseService, BaseService>();    
 builder.Services.AddScoped<ICouponService,CouponService>();
 builder.Services.AddScoped<IAuthService,AuthService>();
 builder.Services.AddScoped<ITokenProvider,TokenProvider>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
