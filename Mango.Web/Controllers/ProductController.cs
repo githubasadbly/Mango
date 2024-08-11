@@ -82,16 +82,20 @@ namespace Mango.Web.Controllers
         }
         public async Task<IActionResult> ProductEdit(int productId)
         {
-            ResponseDto? response = await _productService.GetProductByIdAsync(productId);
-            if (response != null && response.IsSuccess)
+            if (ModelState.IsValid)
             {
-                ProductDto? model = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
-                return View(model);
+                ResponseDto? response = await _productService.GetProductByIdAsync(productId);
+                if (response != null && response.IsSuccess)
+                {
+                    ProductDto? model = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(response.Result));
+                    return View(model);
+                }
+                else
+                {
+                    TempData["error"] = response?.Message;
+                }
             }
-            else
-            {
-                TempData["error"] = response?.Message;
-            }
+           
             return NotFound();
         }
         [HttpPost]
