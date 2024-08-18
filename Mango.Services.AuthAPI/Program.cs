@@ -39,6 +39,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Production me Swagger Page run krane ke IsDevelopment() wali condition
+//Puri delete karke new code likhenge niche wala =>
+//app.UseSwagger();
+//app.UseSwaggerUI(c =>
+//{
+//    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AUTH API");
+//    c.RoutePrefix = string.Empty;
+//});
+
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

@@ -42,15 +42,6 @@ namespace Mango.Web.Service
             });
         }
 
-        //public async Task<ResponseDto?> GetProductAsync(string couponCode)
-        //{
-        //    return await _baseService.SendAsync(new RequestDto()
-        //    {
-        //        ApiType = SD.ApiType.GET,
-        //        Url = SD.CouponAPIBase + "/api/coupon/GetByCode/" + couponCode
-        //    }); 
-        //}
-
         public async Task<ResponseDto?> GetProductByIdAsync(int id)
         {
             return await _baseService.SendAsync(new RequestDto()

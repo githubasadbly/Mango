@@ -63,6 +63,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Production me Swagger Page run krane ke IsDevelopment() wali condition
+//Puri delete karke new code likhenge niche wala =>
+//app.UseSwagger();
+//app.UseSwaggerUI(c =>
+//{
+//    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Coupon API");
+//    c.RoutePrefix = string.Empty;
+//});
+
 Stripe.StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseHttpsRedirection();
